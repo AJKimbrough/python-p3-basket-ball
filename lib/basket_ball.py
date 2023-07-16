@@ -1,3 +1,4 @@
+import ipdb
 def game_dict():
     return {
         "home": {
@@ -228,24 +229,45 @@ def player_stats(player_name):
 def average_rebounds_by_shoe_brand():
     new_dict = {}
     new_list = []
-    reb_list = []
-    shoe_brand = []
-    home_list =[]
-    away_list=[]
     
     for item in game_dict():
         for player in game_dict()[item]["players"]:
-            shoe_brand.append(player["shoe_brand"])
-            reb_list.append(player["rebounds_per_game"])
+            if player["shoe_brand"] in new_dict.keys():
+                #ipdb.set_trace()
+                new_dict[player["shoe_brand"]].append(player["rebounds_per_game"])
+            else:
+                new_dict[player["shoe_brand"]] = [player["rebounds_per_game"]]
+        #ipdb.set_trace()
         
-    for brand in shoe_brand:
-        new_dict[f"{brand}"] = reb_list
+    for key,val in new_dict.items():
+        if key in new_dict:
+            if len(val) == 1:
+                new_dict[key] = [f"{(sum(val)/(len(val)))}0"]
+            else:
+                new_dict[key] = [round(sum(val)/(len(val)), 2)]
+            
+    for item in new_dict:
+       for i in new_dict[item]:
+           print(f"{item}:  {i}")
+    #for value in new_dict.values():
+     #   new_dict[] = sum(new_dict.values())
+        #if len(item) > 0:
+        #ipdb.set_trace()
+            #new_dict["keys"] = (round(sum(item)/ (len(item)), 2))
+        #else:
+            #new_dict[] = (item)
+    
+    
+    #print(new_list)
+        
+        
 
         
+    
         
         
-    #print(reb_list)
-    print(new_dict)
+        
+    #return(new_dict)
             
     
 
