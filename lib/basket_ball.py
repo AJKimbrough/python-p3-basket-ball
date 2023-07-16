@@ -228,16 +228,13 @@ def player_stats(player_name):
             
 def average_rebounds_by_shoe_brand():
     new_dict = {}
-    new_list = []
     
     for item in game_dict():
         for player in game_dict()[item]["players"]:
             if player["shoe_brand"] in new_dict.keys():
-                #ipdb.set_trace()
                 new_dict[player["shoe_brand"]].append(player["rebounds_per_game"])
             else:
                 new_dict[player["shoe_brand"]] = [player["rebounds_per_game"]]
-        #ipdb.set_trace()
         
     for key,val in new_dict.items():
         if key in new_dict:
@@ -249,26 +246,3 @@ def average_rebounds_by_shoe_brand():
     for item in new_dict:
        for i in new_dict[item]:
            print(f"{item}:  {i}")
-    #for value in new_dict.values():
-     #   new_dict[] = sum(new_dict.values())
-        #if len(item) > 0:
-        #ipdb.set_trace()
-            #new_dict["keys"] = (round(sum(item)/ (len(item)), 2))
-        #else:
-            #new_dict[] = (item)
-    
-    
-    #print(new_list)
-        
-        
-
-        
-    
-        
-        
-        
-    #return(new_dict)
-            
-    
-
-print(average_rebounds_by_shoe_brand())
